@@ -11,7 +11,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 app = Flask(__name__)
 
-GEMINI_API_KEY = "AIzaSyAPCle_4hl0e4dsVBb2ak3I8Ikov1SljOI"
+GEMINI_API_KEY = ""
 GEMINI_MODEL = "gemini-2.5-flash"
 client = genai.Client(api_key=GEMINI_API_KEY)
 
