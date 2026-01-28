@@ -12,7 +12,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 app = Flask(__name__)
 
 <<<<<<< HEAD
-GEMINI_API_KEY = "AIzaSyABkO2Xa6Gg3gEVCHKEK16auiQiIVxVmBs"
+GEMINI_API_KEY = ""
 =======
 GEMINI_API_KEY = ""
 >>>>>>> 646efcff266f4b4a3543a6adc1e42cf12b2ea1e9
