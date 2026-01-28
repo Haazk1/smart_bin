@@ -46,7 +46,78 @@ It captures an image using an **ESP32-CAM**, sends the image to a local Python s
 ```
 
 ---
+## 🔌 Hardware Connections
 
+### 🧠 UI & Control ESP32
+
+| Component | ESP32 Pin | Description |
+|---------|----------|------------|
+| OLED Display (SSD1306) | GPIO 21 (SDA), GPIO 22 (SCL) | I²C menu & result display |
+| Joystick X-axis | GPIO 39 | Left / Right navigation |
+| Joystick Y-axis | GPIO 36 | Up / Down navigation |
+| Joystick Button | GPIO 25 | Menu select |
+| Ultrasonic TRIG | GPIO 5 | Distance trigger |
+| Ultrasonic ECHO | GPIO 18 | Distance measurement |
+| UART TX → Motor ESP32 | GPIO 17 | Sends classification command |
+| UART RX ← Motor ESP32 | GPIO 16 | Optional feedback |
+| Power | 5V + GND | Shared system power |
+
+---
+
+### 📷 ESP32-CAM (Camera Node)
+
+| Component | ESP32-CAM Pin | Description |
+|---------|--------------|------------|
+| Camera Data D0–D7 | GPIO 5,18,19,21,36,39,34,35 | Camera data lines |
+| XCLK | GPIO 0 | Camera clock |
+| PCLK | GPIO 22 | Pixel clock |
+| VSYNC | GPIO 25 | Frame sync |
+| HREF | GPIO 23 | Line sync |
+| SIOD (SDA) | GPIO 26 | Camera control |
+| SIOC (SCL) | GPIO 27 | Camera control |
+| Power Down | GPIO 32 | Camera power |
+| Flash LED | GPIO 4 | Status / illumination |
+| Wi-Fi | — | HTTP image streaming |
+| Power | 5V + GND | Shared power |
+
+---
+
+### ⚙️ Motor & Actuation ESP32
+
+#### Stepper Motor (via L298N)
+
+| Component | ESP32 Pin | Description |
+|---------|----------|------------|
+| IN1 | GPIO 14 | Stepper control |
+| IN2 | GPIO 27 | Stepper control |
+| IN3 | GPIO 26 | Stepper control |
+| IN4 | GPIO 25 | Stepper control |
+
+#### Microswitches (Position Feedback)  
+⚠️ External 10k pull-up resistors required (GPIO 34–39)
+
+| Switch | ESP32 Pin | Category |
+|------|----------|----------|
+| SW1 | GPIO 36 | Plastic |
+| SW2 | GPIO 39 | Paper |
+| SW3 | GPIO 34 | Metal |
+| SW4 | GPIO 35 | Trash |
+
+#### Servo Motor
+
+| Component | ESP32 Pin | Description |
+|---------|----------|------------|
+| Servo Motor | GPIO 4 | Dispensing mechanism |
+
+---
+
+## 🧩 Software & Technologies
+- ESP32 / ESP32-CAM
+- Arduino IDE
+- Python (Flask)
+- Google Gemini API
+- UART (Motor control)
+- HTTP (Image transfer)
 ## Hardware (as used in code)
 
 ### 1) ESP32-CAM board
